@@ -18,8 +18,7 @@ while run:
        counter -= 1
        pg.press('right')
        print(f"Осталось {counter}")
-#    elif pg.locateOnScreen('res/scsh3.png', confidence=.9):
-#       pg.press('esc')
-# 123  
+    elif pg.locateOnScreen('res/scsh3.png', confidence=.9):
+       pg.press('esc')
     else: pg.press('left')
 print(f'Времени затрачено {int((time.time() - start)/60)}минут и {int((time.time() - start)%60)} секунд')
