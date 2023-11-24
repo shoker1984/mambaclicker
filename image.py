@@ -12,8 +12,8 @@ counter = int(argv[1])
 while run:
     if pg.locateOnScreen('res/scsh2.png') or counter == 0:
         run = False
-    elif pg.locateOnScreen('res/scsh.png', region=(1345, 965, 124, 38), confidence=.3):
-       if pg.locateOnScreen('res/scsh3.png', region=(749, 340, 430, 159), confidence=.7):
+    elif pg.locateOnScreen('res/scsh.png', region=(1345, 965, 124, 38), confidence=.2):
+       if pg.locateOnScreen('res/scsh3.png', region=(749, 340, 430, 159), confidence=.3):
              pg.press('esc')
        counter -= 1
        pg.press('right')
