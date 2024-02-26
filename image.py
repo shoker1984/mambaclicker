@@ -2,12 +2,14 @@
     
 import pyautogui as pg
 import time
+from sys import argv
 
 
 def main():
+    time.sleep(3)
+    counter = int(argv[1])
     run = True
-    while run:
-        
+    while run:  
         if counter == 0:
             run = False
         elif pg.locateOnScreen('res/scsh3.png', region=(749, 340, 430, 159), confidence=.8):
