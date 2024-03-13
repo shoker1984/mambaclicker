@@ -7,6 +7,7 @@ from sys import argv
 
 def main():
     time.sleep(3)
+    start = time.time()
     counter = int(argv[1])
     run = True
     while run:  
