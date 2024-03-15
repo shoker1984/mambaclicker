@@ -1,5 +1,6 @@
 test.py
 *.*.save
 .gitignore
+*.png
 .*.png
 .venv
