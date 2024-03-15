@@ -20,10 +20,12 @@ def main():
         if counter == 0:
             run = False
 
-        elif np.equal(np.array(cv2.imread('res/scsh3.png', cv2.IMREAD_GRAYSCALE)), np.array(cv2.imread('s3.png', cv2.IMREAD_GRAYSCALE))).all():
-            pg.press('esc')
+        # elif np.equal(np.array(cv2.imread('res/scsh3.png', cv2.IMREAD_GRAYSCALE)), np.array(cv2.imread('s3.png', cv2.IMREAD_GRAYSCALE))).all():
+        #     pg.press('esc')
 
         elif np.equal(np.array(cv2.imread('res/scsh.png', cv2.IMREAD_GRAYSCALE)), np.array(cv2.imread('s.png', cv2.IMREAD_GRAYSCALE))).all():
+            if np.equal(np.array(cv2.imread('res/scsh3.png', cv2.IMREAD_GRAYSCALE)), np.array(cv2.imread('s3.png', cv2.IMREAD_GRAYSCALE))).all():
+                pg.press('esc')
             counter -= 1
             pg.press('right')
             print(f"Осталось {counter}")
