@@ -4,13 +4,15 @@ import pyautogui as pg
 import cv2
 import numpy as np
 import time, os
+import tkinter as tk
 from sys import argv
 
-
+counter = int(argv[1])
 def main():
     time.sleep(3)
     start = time.time()
-    counter = int(argv[1])
+    # counter = int(argv[1])
+    global counter
     run = True
     while run:
         
@@ -19,9 +21,6 @@ def main():
         
         if counter == 0:
             run = False
-
-        # elif np.equal(np.array(cv2.imread('res/scsh3.png', cv2.IMREAD_GRAYSCALE)), np.array(cv2.imread('s3.png', cv2.IMREAD_GRAYSCALE))).all():
-        #     pg.press('esc')
 
         elif np.equal(np.array(cv2.imread('res/scsh.png', cv2.IMREAD_GRAYSCALE)), np.array(cv2.imread('s.png', cv2.IMREAD_GRAYSCALE))).all():
             if np.equal(np.array(cv2.imread('res/scsh3.png', cv2.IMREAD_GRAYSCALE)), np.array(cv2.imread('s3.png', cv2.IMREAD_GRAYSCALE))).all():
@@ -39,7 +38,19 @@ def main():
         os.remove('s.png')
         
     print(f'Времени затрачено {int((time.time() - start)/60)} минут и {int((time.time() - start)%60)} секунд,\nвсего {int((time.time() - start))/int(argv[1])} секунд на анкету')
-    
+
+def win():
+    global counter
+    root = tk.Tk()
+    root.attributes('-topmost', True)
+    root.geometry('100x100')
+    root.resizable(False, False)
+    lb = tk.Label(text=f'{counter}')
+    btn = tk.ttk.Button(text='start', command=main)
+    lb.pack(expand=True)
+    btn.pack()
+    root.update()
+    root.mainloop()
     
 if __name__ == '__main__':
-    main()
+    win()
