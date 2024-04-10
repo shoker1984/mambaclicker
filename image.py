@@ -9,7 +9,7 @@ import time
 from sys import argv
 
 
-def main():
+def main(): #Основная функция
     root = tk.Tk()
     root.attributes('-topmost', True)
     root.geometry('400x400+0+0')
