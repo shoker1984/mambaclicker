@@ -1,14 +1,13 @@
 #! /usr/bin/python3
 
 import pyautogui as pg
-import cv2
+import cv2, time, os, glob
 import numpy as np
-import time, os
 import tkinter as tk
 from sys import argv
 
 
-def main(): #Основная функция
+def main():  # Основная функция
     root = tk.Tk()
     root.attributes('-topmost', True)
     root.geometry('400x400+0+0')
@@ -31,6 +30,9 @@ def main(): #Основная функция
 
             pg.screenshot('s3.png', region=(749, 340, 430, 159))
             pg.screenshot('s.png', region=(1341, 966, 132, 36))
+            pg.screenshot('s4.png', region=(987, 552, 267, 146))
+            pg.screenshot('s5.png', region=(618, 289, 64, 63))
+            pg.screenshot('s6.png', region=(988, 539, 254, 93))
 
             if counter == 0:
                 run = False
@@ -44,13 +46,19 @@ def main(): #Основная функция
                 lb['text'] = f'{counter}'
                 pg.press('right')
 
-            elif (pg.locateOnScreen('res/scsh4.png', region=(987, 552, 267, 146), confidence=.8)
-                  or pg.locateOnScreen('res/scsh5.png', region=(618, 289, 64, 63), confidence=.8)
-                  or pg.locateOnScreen('res/scsh6.png', region=(988, 539, 254, 93), confidence=.8)):
+            elif (np.equal(np.array(cv2.imread('res/scsh4.png', cv2.IMREAD_GRAYSCALE))),
+                  np.array(cv2.imread('s4.png', cv2.IMREAD_GRAYSCALE)).all()
+                  or
+                  np.equal(np.array(cv2.imread('res/scsh5.png', cv2.IMREAD_GRAYSCALE))),
+                  np.array(cv2.imread('s5.png', cv2.IMREAD_GRAYSCALE)).all()
+                  or
+                  np.equal(np.array(cv2.imread('res/scsh6.png', cv2.IMREAD_GRAYSCALE))),
+                  np.array(cv2.imread('s6.png', cv2.IMREAD_GRAYSCALE)).all()):
                 pg.press('left')
 
-            os.remove('s3.png')
-            os.remove('s.png')
+            for f in glob.glob('*.png'):
+                os.remove(f)
+
         lb['text'] = (
             f'Времени затрачено {int((time.time() - start_time) / 60)} минут и '
             f'{int((time.time() - start_time) % 60)} секунд,'
