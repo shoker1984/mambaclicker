@@ -5,7 +5,6 @@ import cv2
 import numpy as np
 import time, os
 import tkinter as tk
-import time
 from sys import argv
 
 
