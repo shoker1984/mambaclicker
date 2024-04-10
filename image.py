@@ -5,6 +5,7 @@ import cv2
 import numpy as np
 import time, os
 import tkinter as tk
+import time
 from sys import argv
 
 
@@ -20,7 +21,7 @@ def main():
     lb = (tk.Label(text=f'{counter}'))
     lb.pack(expand=True)
 
-    def start():
+    def start():  # for button
         time.sleep(2)
         nonlocal run
         nonlocal counter
