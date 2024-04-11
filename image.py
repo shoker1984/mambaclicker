@@ -32,7 +32,7 @@ def main():  # Основная функция
             pg.screenshot('s.png', region=(1341, 966, 132, 36))
             pg.screenshot('s4.png', region=(987, 552, 267, 146))
             pg.screenshot('s5.png', region=(618, 289, 64, 63))
-            pg.screenshot('s6.png', region=(988, 539, 254, 93))
+            # pg.screenshot('s6.png', region=(988, 539, 254, 93))
 
             if counter == 0:
                 run = False
@@ -46,14 +46,15 @@ def main():  # Основная функция
                 lb['text'] = f'{counter}'
                 pg.press('right')
 
-            elif (np.equal(np.array(cv2.imread('res/scsh4.png', cv2.IMREAD_GRAYSCALE))),
-                  np.array(cv2.imread('s4.png', cv2.IMREAD_GRAYSCALE)).all()
+            elif (np.equal(np.array(cv2.imread('res/scsh4.png', cv2.IMREAD_GRAYSCALE)), 
+                  np.array(cv2.imread('s4.png', cv2.IMREAD_GRAYSCALE))).all()
                   or
-                  np.equal(np.array(cv2.imread('res/scsh5.png', cv2.IMREAD_GRAYSCALE))),
-                  np.array(cv2.imread('s5.png', cv2.IMREAD_GRAYSCALE)).all()
-                  or
-                  np.equal(np.array(cv2.imread('res/scsh6.png', cv2.IMREAD_GRAYSCALE))),
-                  np.array(cv2.imread('s6.png', cv2.IMREAD_GRAYSCALE)).all()):
+                  np.equal(np.array(cv2.imread('res/scsh5.png', cv2.IMREAD_GRAYSCALE)),
+                  np.array(cv2.imread('s5.png', cv2.IMREAD_GRAYSCALE))).all()
+                #   or
+                #   np.equal(np.array(cv2.imread('res/scsh6.png', cv2.IMREAD_GRAYSCALE)),
+                #   np.array(cv2.imread('s6.png', cv2.IMREAD_GRAYSCALE))).all()):
+                  ):
                 pg.press('left')
 
             for f in glob.glob('*.png'):
