@@ -30,8 +30,16 @@ def main():
         while run:
             root.update()
 
-            pg.screenshot('s3.png', region=(749, 340, 430, 159))
-            pg.screenshot('s.png', region=(1341, 966, 132, 36))
+            img = pg.screenshot(region=(749, 340, 430, 159))
+            img.save('s3.png')
+            img = pg.screenshot(region=(1341, 966, 132, 36))
+            img.save('s.png')
+            img = pg.screenshot(region=(987, 552, 267, 146))
+            img.save('s4.png')
+            img = pg.screenshot(region=(618, 289, 64, 63))
+            img.save('s5.png')
+            img = pg.screenshot(region=(988, 539, 254, 93))
+            img.save('s6.png')
 
             if counter == 0:
                 run = False
@@ -45,13 +53,22 @@ def main():
                 lb['text'] = f'{counter}'
                 pg.press('right')
 
-            elif (pg.locateOnScreen('res/scsh4.png', region=(987, 552, 267, 146), confidence=.8)
-                  or pg.locateOnScreen('res/scsh5.png', region=(618, 289, 64, 63), confidence=.8)
-                  or pg.locateOnScreen('res/scsh6.png', region=(988, 539, 254, 93), confidence=.8)):
+            elif np.equal(np.array(cv2.imread('res/scsh4.png', cv2.IMREAD_GRAYSCALE)),
+                          np.array(cv2.imread('s4.png', cv2.IMREAD_GRAYSCALE))).all():
+                pg.press('left')
+            elif np.equal(np.array(cv2.imread('res/scsh4.png', cv2.IMREAD_GRAYSCALE)),
+                          np.array(cv2.imread('s4.png', cv2.IMREAD_GRAYSCALE))).all():
+                pg.press('left')
+            elif np.equal(np.array(cv2.imread('res/scsh5.png', cv2.IMREAD_GRAYSCALE)),
+                          np.array(cv2.imread('s5.png', cv2.IMREAD_GRAYSCALE))).all():
+                pg.press('left')
+            elif np.equal(np.array(cv2.imread('res/scsh6.png', cv2.IMREAD_GRAYSCALE)),
+                          np.array(cv2.imread('s6.png', cv2.IMREAD_GRAYSCALE))).all():
                 pg.press('left')
 
-            os.remove('s3.png')
-            os.remove('s.png')
+            # os.remove('s3.png')
+            # os.remove('s.png')
+            time.sleep(.5)
         lb['text'] = (
             f'Времени затрачено {int((time.time() - start_time) / 60)} минут и '
             f'{int((time.time() - start_time) % 60)} секунд,'
