@@ -36,7 +36,7 @@ def main():
             img.save('s.png')
             img = pg.screenshot(region=(987, 552, 267, 146))
             img.save('s4.png')
-            img = pg.screenshot(region=(618, 289, 64, 63))
+            img = pg.screenshot(region=(633, 307, 30, 31))
             img.save('s5.png')
             img = pg.screenshot(region=(988, 539, 254, 93))
             img.save('s6.png')
@@ -56,9 +56,9 @@ def main():
             elif np.equal(np.array(cv2.imread('res/scsh4.png', cv2.IMREAD_GRAYSCALE)),
                           np.array(cv2.imread('s4.png', cv2.IMREAD_GRAYSCALE))).all():
                 pg.press('left')
-            elif np.equal(np.array(cv2.imread('res/scsh4.png', cv2.IMREAD_GRAYSCALE)),
-                          np.array(cv2.imread('s4.png', cv2.IMREAD_GRAYSCALE))).all():
-                pg.press('left')
+            # elif np.equal(np.array(cv2.imread('res/scsh4.png', cv2.IMREAD_GRAYSCALE)),
+            #               np.array(cv2.imread('s4.png', cv2.IMREAD_GRAYSCALE))).all():
+            #     pg.press('left')
             elif np.equal(np.array(cv2.imread('res/scsh5.png', cv2.IMREAD_GRAYSCALE)),
                           np.array(cv2.imread('s5.png', cv2.IMREAD_GRAYSCALE))).all():
                 pg.press('left')
