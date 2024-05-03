@@ -56,9 +56,6 @@ def main():
             elif np.equal(np.array(cv2.imread('res/scsh4.png', cv2.IMREAD_GRAYSCALE)),
                           np.array(cv2.imread('s4.png', cv2.IMREAD_GRAYSCALE))).all():
                 pg.press('left')
-            # elif np.equal(np.array(cv2.imread('res/scsh4.png', cv2.IMREAD_GRAYSCALE)),
-            #               np.array(cv2.imread('s4.png', cv2.IMREAD_GRAYSCALE))).all():
-            #     pg.press('left')
             elif np.equal(np.array(cv2.imread('res/scsh5.png', cv2.IMREAD_GRAYSCALE)),
                           np.array(cv2.imread('s5.png', cv2.IMREAD_GRAYSCALE))).all():
                 pg.press('left')
@@ -66,9 +63,7 @@ def main():
                           np.array(cv2.imread('s6.png', cv2.IMREAD_GRAYSCALE))).all():
                 pg.press('left')
 
-            # os.remove('s3.png')
-            # os.remove('s.png')
-            time.sleep(.5)
+            time.sleep(.4)
         lb['text'] = (
             f'Времени затрачено {int((time.time() - start_time) / 60)} минут и '
             f'{int((time.time() - start_time) % 60)} секунд,'
