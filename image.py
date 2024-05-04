@@ -62,10 +62,10 @@ def main():  # Основная функция
                 pg.press('left')
             
             time.sleep(.4)
-            lb['text'] = (
-            f'Времени затрачено {int((time.time() - start_time) / 60)} минут и '
-            f'{int((time.time() - start_time) % 60)} секунд,'
-            f'\nвсего {int((time.time() - start_time)) / int(argv[1])} секунд на анкету')
+        lb['text'] = (
+        f'Времени затрачено {int((time.time() - start_time) / 60)} минут и '
+        f'{int((time.time() - start_time) % 60)} секунд,'
+        f'\nвсего {int((time.time() - start_time)) / int(argv[1])} секунд на анкету')
 
     btn = (tk.Button(text='start', command=start))
     btn.pack()
