@@ -61,6 +61,12 @@ def main():  # Основная функция
                           np.array(cv2.imread('s6.png', cv2.IMREAD_GRAYSCALE))).all():
                 pg.press('left')
             
+            os.remove('s.png')
+            os.remove('s3.png')
+            os.remove('s4.png')
+            os.remove('s5.png')
+            os.remove('s6.png')
+            
             time.sleep(.4)
         lb['text'] = (
         f'Времени затрачено {int((time.time() - start_time) / 60)} минут и '
