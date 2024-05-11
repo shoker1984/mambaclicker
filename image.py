@@ -1,8 +1,10 @@
 #! /usr/bin/python3
 
-import pyautogui as pg
-import cv2, time, os, glob
-import numpy as np
+from pyautogui import screenshot, press
+from cv2 import imread, IMREAD_GRAYSCALE
+from time import sleep, time
+from os import remove
+from numpy import equal, array
 import tkinter as tk
 from sys import argv
 
@@ -12,15 +14,14 @@ def main():  # Основная функция
     root.attributes('-topmost', True)
     root.geometry('400x400+0+0')
     root.resizable(False, False)
-    # time.sleep(3)
-    start_time = time.time()
+    start_time = time()
     counter = int(argv[1])
     run = False
     lb = (tk.Label(text=f'{counter}'))
     lb.pack(expand=True)
 
     def start():  # for button
-        time.sleep(2)
+        sleep(2)
         nonlocal run
         nonlocal counter
         nonlocal start_time
@@ -28,50 +29,50 @@ def main():  # Основная функция
         while run:
             root.update()
 
-            img = pg.screenshot(region=(749, 340, 430, 159))
+            img = screenshot(region=(749, 340, 430, 159))
             img.save('s3.png')
-            img = pg.screenshot(region=(1341, 966, 132, 36))
+            img = screenshot(region=(1341, 966, 132, 36))
             img.save('s.png')
-            img = pg.screenshot(region=(987, 552, 267, 146))
+            img = screenshot(region=(987, 552, 267, 146))
             img.save('s4.png')
-            img = pg.screenshot(region=(633, 307, 30, 31))
+            img = screenshot(region=(633, 307, 30, 31))
             img.save('s5.png')
-            img = pg.screenshot(region=(988, 539, 254, 93))
+            img = screenshot(region=(988, 539, 254, 93))
             img.save('s6.png')
 
             if counter == 0:
                 run = False
 
-            elif np.equal(np.array(cv2.imread('res/scsh.png', cv2.IMREAD_GRAYSCALE)),
-                          np.array(cv2.imread('s.png', cv2.IMREAD_GRAYSCALE))).all():
-                if np.equal(np.array(cv2.imread('res/scsh3.png', cv2.IMREAD_GRAYSCALE)),
-                            np.array(cv2.imread('s3.png', cv2.IMREAD_GRAYSCALE))).all():
-                    pg.press('esc')
+            elif equal(array(imread('res/scsh.png', IMREAD_GRAYSCALE)),
+                          array(imread('s.png', IMREAD_GRAYSCALE))).all():
+                if equal(array(imread('res/scsh3.png', IMREAD_GRAYSCALE)),
+                            array(imread('s3.png', IMREAD_GRAYSCALE))).all():
+                    press('esc')
                 counter -= 1
                 lb['text'] = f'{counter}'
-                pg.press('right')
+                press('right')
 
-            elif np.equal(np.array(cv2.imread('res/scsh4.png', cv2.IMREAD_GRAYSCALE)),
-                          np.array(cv2.imread('s4.png', cv2.IMREAD_GRAYSCALE))).all():
-                pg.press('left')
-            elif np.equal(np.array(cv2.imread('res/scsh5.png', cv2.IMREAD_GRAYSCALE)),
-                          np.array(cv2.imread('s5.png', cv2.IMREAD_GRAYSCALE))).all():
-                pg.press('left')
-            elif np.equal(np.array(cv2.imread('res/scsh6.png', cv2.IMREAD_GRAYSCALE)),
-                          np.array(cv2.imread('s6.png', cv2.IMREAD_GRAYSCALE))).all():
-                pg.press('left')
+            elif equal(array(imread('res/scsh4.png', IMREAD_GRAYSCALE)),
+                          array(imread('s4.png', IMREAD_GRAYSCALE))).all():
+                press('left')
+            elif equal(array(imread('res/scsh5.png', IMREAD_GRAYSCALE)),
+                          array(imread('s5.png', IMREAD_GRAYSCALE))).all():
+                press('left')
+            elif equal(array(imread('res/scsh6.png', IMREAD_GRAYSCALE)),
+                          array(imread('s6.png', IMREAD_GRAYSCALE))).all():
+                press('left')
             
-            os.remove('s.png')
-            os.remove('s3.png')
-            os.remove('s4.png')
-            os.remove('s5.png')
-            os.remove('s6.png')
+            remove('s.png')
+            remove('s3.png')
+            remove('s4.png')
+            remove('s5.png')
+            remove('s6.png')
             
-            time.sleep(.4)
+            sleep(.4)
         lb['text'] = (
-        f'Времени затрачено {int((time.time() - start_time) / 60)} минут и '
-        f'{int((time.time() - start_time) % 60)} секунд,'
-        f'\nвсего {int((time.time() - start_time)) / int(argv[1])} секунд на анкету')
+        f'Времени затрачено {int((time() - start_time) / 60)} минут и '
+        f'{int((time() - start_time) % 60)} секунд,'
+        f'\nвсего {int((time() - start_time)) / int(argv[1])} секунд на анкету')
 
     btn = (tk.Button(text='start', command=start))
     btn.pack()
