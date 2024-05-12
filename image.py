@@ -25,7 +25,7 @@ def main():  # Основная функция
         nonlocal run
         nonlocal counter
         nonlocal start_time
-        run = True
+        run = not run
         while run:
             root.update()
 
