@@ -1,6 +1,6 @@
 #! /usr/bin/python3
 
-from pyautogui import screenshot, press
+from pyautogui import screenshot, press, click
 from cv2 import imread, IMREAD_GRAYSCALE
 from time import sleep, time
 from os import remove
@@ -21,7 +21,8 @@ def main():  # Основная функция
     lb.pack(expand=True)
 
     def start():  # for button
-        sleep(2)
+        click(x=1744, y=507)
+        # sleep(2)
         nonlocal run
         nonlocal counter
         nonlocal start_time
@@ -29,7 +30,7 @@ def main():  # Основная функция
         while run:
             root.update()
 
-            img = screenshot(region=(749, 340, 430, 159))
+            img = screenshot(region=(769, 402, 380, 86))
             img.save('s3.png')
             img = screenshot(region=(1341, 966, 132, 36))
             img.save('s.png')
@@ -42,24 +43,18 @@ def main():  # Основная функция
 
             if counter == 0:
                 run = False
-
-            elif equal(array(imread('res/scsh.png', IMREAD_GRAYSCALE)),
-                          array(imread('s.png', IMREAD_GRAYSCALE))).all():
-                if equal(array(imread('res/scsh3.png', IMREAD_GRAYSCALE)),
-                            array(imread('s3.png', IMREAD_GRAYSCALE))).all():
-                    press('esc')
+            elif equal(array(imread('res/scsh3.png', IMREAD_GRAYSCALE)), array(imread('s3.png', IMREAD_GRAYSCALE))).all():
+                press('esc')
+            elif equal(array(imread('res/scsh.png', IMREAD_GRAYSCALE)), array(imread('s.png', IMREAD_GRAYSCALE))).all():
                 counter -= 1
                 lb['text'] = f'{counter}'
                 press('right')
 
-            elif equal(array(imread('res/scsh4.png', IMREAD_GRAYSCALE)),
-                          array(imread('s4.png', IMREAD_GRAYSCALE))).all():
+            elif equal(array(imread('res/scsh4.png', IMREAD_GRAYSCALE)), array(imread('s4.png', IMREAD_GRAYSCALE))).all():
                 press('left')
-            elif equal(array(imread('res/scsh5.png', IMREAD_GRAYSCALE)),
-                          array(imread('s5.png', IMREAD_GRAYSCALE))).all():
+            elif equal(array(imread('res/scsh5.png', IMREAD_GRAYSCALE)), array(imread('s5.png', IMREAD_GRAYSCALE))).all():
                 press('left')
-            elif equal(array(imread('res/scsh6.png', IMREAD_GRAYSCALE)),
-                          array(imread('s6.png', IMREAD_GRAYSCALE))).all():
+            elif equal(array(imread('res/scsh6.png', IMREAD_GRAYSCALE)), array(imread('s6.png', IMREAD_GRAYSCALE))).all():
                 press('left')
             
             remove('s.png')
