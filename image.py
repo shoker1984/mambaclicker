@@ -6,25 +6,26 @@ from time import sleep, time
 from os import remove
 from numpy import equal, array
 import tkinter as tk
-from sys import argv
 
 
 def main():  # Основная функция
     root = tk.Tk()
     root.attributes('-topmost', True)
-    root.geometry('400x400+0+0')
+    root.geometry('200x200+0+0')
     root.resizable(False, False)
     start_time = time()
-    counter = int(argv[1])
     run = False
-    lb = (tk.Label(text=f'{counter}'))
+    ent = tk.ttk.Entry()
+    ent.insert(0, '0')
+    lb = (tk.Label(text=f'{ent.get()}'))
     lb.pack(expand=True)
+    ent.pack()
 
     def start():  # for button
         click(x=1744, y=507)
         # sleep(2)
         nonlocal run
-        nonlocal counter
+        counter = int(ent.get())
         nonlocal start_time
         run = not run
         while run:
@@ -67,7 +68,7 @@ def main():  # Основная функция
         lb['text'] = (
         f'Времени затрачено {int((time() - start_time) / 60)} минут и '
         f'{int((time() - start_time) % 60)} секунд,'
-        f'\nвсего {int((time() - start_time)) / int(argv[1])} секунд на анкету')
+        f'\nвсего {int((time() - start_time)) / int(ent.get())} секунд на анкету')
 
     btn = (tk.Button(text='start', command=start))
     btn.pack()
