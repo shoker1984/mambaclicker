@@ -11,7 +11,7 @@ import tkinter as tk
 def main():  # Основная функция
     root = tk.Tk()
     root.attributes('-topmost', True)
-    root.geometry('200x200+0+0')
+    root.geometry('250x150+0+0')
     root.resizable(False, False)
     start_time = time()
     run = False
@@ -73,7 +73,7 @@ def main():  # Основная функция
     btn = (tk.Button(text='start', command=start))
     btn.pack()
 
-    lb['text'] = 'Нажмите старт'
+    lb['text'] = 'Введите количество и Нажмите старт'
 
     root.mainloop()
 
