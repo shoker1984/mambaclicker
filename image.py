@@ -33,11 +33,11 @@ def main():  # Основная функция
 
             img = screenshot(region=(769, 402, 380, 86))
             img.save('s3.png')
-            img = screenshot(region=(1341, 966, 132, 36))
+            img = screenshot(region=(1327, 972, 155, 43))
             img.save('s.png')
-            img = screenshot(region=(987, 552, 267, 146))
+            img = screenshot(region=(1025, 593, 166, 103))
             img.save('s4.png')
-            img = screenshot(region=(633, 307, 30, 31))
+            img = screenshot(region=(630, 339, 32, 32))
             img.save('s5.png')
             img = screenshot(region=(988, 539, 254, 93))
             img.save('s6.png')
@@ -55,8 +55,8 @@ def main():  # Основная функция
                 press('left')
             elif equal(array(imread('res/scsh5.png', IMREAD_GRAYSCALE)), array(imread('s5.png', IMREAD_GRAYSCALE))).all():
                 press('left')
-            elif equal(array(imread('res/scsh6.png', IMREAD_GRAYSCALE)), array(imread('s6.png', IMREAD_GRAYSCALE))).all():
-                press('left')
+#            elif equal(array(imread('res/scsh6.png', IMREAD_GRAYSCALE)), array(imread('s6.png', IMREAD_GRAYSCALE))).all():
+#                press('left')
             
             remove('s.png')
             remove('s3.png')
