@@ -33,9 +33,9 @@ def main():  # Основная функция
 
             img = screenshot(region=(769, 402, 380, 86))
             img.save('s3.png')
-            img = screenshot(region=(1327, 972, 155, 43))
+            img = screenshot(region=(1322, 957, 181, 108))
             img.save('s.png')
-            img = screenshot(region=(1025, 593, 166, 103))
+            img = screenshot(region=(921, 483, 373, 316))
             img.save('s4.png')
             img = screenshot(region=(630, 339, 32, 32))
             img.save('s5.png')
